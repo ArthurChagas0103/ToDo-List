@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import TarefasPendentes from "./pages/TarefasPendentes/TarefasPendentes";
+import TaskApp from "./pages/TaskApp";
 
 function AppRoutes() {
     return (
         <>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<TarefasPendentes/>}></Route>
+                    <Route path="/" element={<TaskApp/>}></Route>
                 </Routes>
             </BrowserRouter>
         </>

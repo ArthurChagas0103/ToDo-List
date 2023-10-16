@@ -32,8 +32,15 @@ const StyleAddTarefa = {
     width: 10%;
     padding: 5px 10px;
     font-family: Poppins, 'sans-serif';
+    background-color: #4DA768;
+    color: #FFF;
+    font-weight: 500;
+    transition: all 0.5s;
     &:hover {
         cursor: pointer;
+        transition: all 0.5s;
+        background-color: #4da76867;
+        color: #1b2029
     }
     `
 }

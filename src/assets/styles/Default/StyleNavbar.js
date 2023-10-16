@@ -19,6 +19,9 @@ const StyleNavbar = {
     Icon : styled(FontAwesomeIcon) `
     font-size: 20px;
     color: #FFF;
+    &:hover {
+        cursor: pointer;
+    }
     `
 }
 

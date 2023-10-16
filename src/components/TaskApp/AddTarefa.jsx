@@ -1,4 +1,4 @@
-import StyleAddTarefa from "../../assets/styles/TarefasPendentes/StyleAddTarefa"
+import StyleAddTarefa from "../../assets/styles/TaskApp/StyleAddTarefa"
 import PropTypes from 'prop-types';
 
 const {
