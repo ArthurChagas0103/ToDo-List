@@ -10,13 +10,16 @@ const {
     ConteudoPrincipal,
     ConteudoPag,
     ContainerTarefas,
-    DefaultContainer
+    ContainerTarefasConcluidas,
+    DefaultContainer,
+    Titulo
 } = StyleTaskApp
 
 function TarefasPendentes() {
 
     const [pagAtual, setPagAtual] = useState('tarefas-pendentes')
     const [listaDeTarefas, setListaDeTarefas] = useState([])
+    const [listaDeTarefasConcluidas, setListaDeTarefasConcluidas] = useState([])
     const [valorInput, setValorInput] = useState('')
 
     const handleClickButtonCriarTarefa = () => {
@@ -32,10 +35,9 @@ function TarefasPendentes() {
         <>
             <Header />
             <ConteudoPrincipal>
-                <NavBar 
-                setPagAtual={setPagAtual}
+                <NavBar
+                    setPagAtual={setPagAtual}
                 />
-                {console.log(pagAtual)}
                 <ConteudoPag>
                     {pagAtual === 'tarefas-pendentes' ?
                         <DefaultContainer>
@@ -44,6 +46,7 @@ function TarefasPendentes() {
                                 valorInput={valorInput}
                                 setValorInput={setValorInput}
                             />
+                            <Titulo>Tarefas pendentes:</Titulo>
                             <ContainerTarefas>
                                 {listaDeTarefas.length > 0 ?
                                     listaDeTarefas.map((item, index) => (
@@ -52,10 +55,20 @@ function TarefasPendentes() {
                                             textoTarefa={item}
                                         />
                                     ))
-                                    : <NenhumaTarefa />}
+                                    : <NenhumaTarefa texto={'Nenhuma tarefa adicionada!'} />}
                             </ContainerTarefas>
                         </DefaultContainer>
-                        : ''
+                        :
+                        <DefaultContainer>
+                            <Titulo>Tarefas concluídas:</Titulo>
+                            <ContainerTarefasConcluidas>
+                                {listaDeTarefasConcluidas.length > 0 ?
+                                    ''
+                                    :
+                                    <NenhumaTarefa texto={'Nenhuma tarefa concluída!'} />
+                                }
+                            </ContainerTarefasConcluidas>
+                        </DefaultContainer>
                     }
                 </ConteudoPag>
             </ConteudoPrincipal>
