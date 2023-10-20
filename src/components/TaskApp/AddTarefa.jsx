@@ -15,6 +15,7 @@ function AddTarefa({handleClickButtonCriarTarefa, valorInput, setValorInput}) {
 
     const handleClickButton = () => {
         handleClickButtonCriarTarefa(valorInput);
+        setValorInput('');
     }
 
     return (

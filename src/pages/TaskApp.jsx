@@ -3,6 +3,7 @@ import StyleTaskApp from "../assets/styles/TaskApp/StyleTaskApp"
 import Header from "../components/Default/Header"
 import NavBar from "../components/Default/Navbar"
 import AddTarefa from "../components/TaskApp/AddTarefa"
+import TarefaConcluida from "../components/Default/TarefaConcluida"
 import Tarefa from "../components/Default/Tarefa"
 import NenhumaTarefa from "../components/Default/NenhumaTarefa"
 
@@ -20,7 +21,6 @@ function TarefasPendentes() {
     const [pagAtual, setPagAtual] = useState('tarefas-pendentes')
     const [listaDeTarefas, setListaDeTarefas] = useState([])
     const [listaDeTarefasConcluidas, setListaDeTarefasConcluidas] = useState([])
-    //const [tarefaConcluida, setTarefaConcluida] = useState(false);
     const [valorInput, setValorInput] = useState('')
 
     const handleClickButtonCriarTarefa = () => {
@@ -32,10 +32,11 @@ function TarefasPendentes() {
         }
     }
 
-    const handleMarcarComoConcluio = (index) => {
+    const handleMarcarComoConcluido = (index) => {
         const novaListaDeTarefas = [...listaDeTarefas];
+        const novaListaDeTarefasOrdenada = novaListaDeTarefas.filter((_, i) => i !== index)
         novaListaDeTarefas[index] = true;
-        setListaDeTarefas(novaListaDeTarefas)
+        setListaDeTarefas(novaListaDeTarefasOrdenada);
         setListaDeTarefasConcluidas((prev) => [...prev, listaDeTarefas[index]]);
     }
 
@@ -66,8 +67,8 @@ function TarefasPendentes() {
                                         <Tarefa
                                             key={index}
                                             textoTarefa={item}
-                                            // onMarcarComoConcluido={handleMarcarComoConcluio(index)}
-                                            // onExcluir={handleExcluir(index)}
+                                            onMarcarComoConcluido={() => handleMarcarComoConcluido(index)}
+                                            onExcluir={() => handleExcluir(index)}
                                         />
                                     ))
                                     : <NenhumaTarefa texto={'Nenhuma tarefa adicionada!'} />}
@@ -78,7 +79,12 @@ function TarefasPendentes() {
                             <Titulo>Tarefas concluídas:</Titulo>
                             <ContainerTarefasConcluidas>
                                 {listaDeTarefasConcluidas.length > 0 ?
-                                    ''
+                                    listaDeTarefasConcluidas.map((item, index) => (
+                                        <TarefaConcluida
+                                            key={index}
+                                            textoTarefa={item}
+                                        />
+                                    ))
                                     :
                                     <NenhumaTarefa texto={'Nenhuma tarefa concluída!'} />
                                 }

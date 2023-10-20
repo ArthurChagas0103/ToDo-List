@@ -31,6 +31,13 @@ const StyleTarefa = {
     font-weight: 400;
     `,
 
+    TextoTarefaConcluida : styled.h6 `
+    font-family: Poppins, 'sans-serif';
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: line-through;
+    `,
+
     BtnTarefaConcluida : styled.button `
     border-radius: 30px;
     border: solid 1px #4da768;
