@@ -17,7 +17,7 @@ function NenhumaTarefa({texto}) {
 }
 
 NenhumaTarefa.propTypes = {
-    texto: PropTypes.func.isRequired,
+    texto: PropTypes.string.isRequired,
 }
 
 export default NenhumaTarefa

@@ -35,7 +35,7 @@ function AddTarefa({handleClickButtonCriarTarefa, valorInput, setValorInput}) {
 AddTarefa.propTypes = {
     handleClickButtonCriarTarefa: PropTypes.func.isRequired,
     setValorInput: PropTypes.func.isRequired,
-    valorInput: PropTypes.func.isRequired
+    valorInput: PropTypes.string.isRequired
 }
 
 export default AddTarefa

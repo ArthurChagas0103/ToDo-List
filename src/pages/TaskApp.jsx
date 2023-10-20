@@ -20,6 +20,7 @@ function TarefasPendentes() {
     const [pagAtual, setPagAtual] = useState('tarefas-pendentes')
     const [listaDeTarefas, setListaDeTarefas] = useState([])
     const [listaDeTarefasConcluidas, setListaDeTarefasConcluidas] = useState([])
+    //const [tarefaConcluida, setTarefaConcluida] = useState(false);
     const [valorInput, setValorInput] = useState('')
 
     const handleClickButtonCriarTarefa = () => {
@@ -29,6 +30,18 @@ function TarefasPendentes() {
         else {
             alert('Nenhum texto adicionado!')
         }
+    }
+
+    const handleMarcarComoConcluio = (index) => {
+        const novaListaDeTarefas = [...listaDeTarefas];
+        novaListaDeTarefas[index] = true;
+        setListaDeTarefas(novaListaDeTarefas)
+        setListaDeTarefasConcluidas((prev) => [...prev, listaDeTarefas[index]]);
+    }
+
+    const handleExcluir = (index) => {
+        const novaListaDeTarefas = listaDeTarefas.filter((_, i) => i !== index);
+        setListaDeTarefas(novaListaDeTarefas);
     }
 
     return (
@@ -53,6 +66,8 @@ function TarefasPendentes() {
                                         <Tarefa
                                             key={index}
                                             textoTarefa={item}
+                                            // onMarcarComoConcluido={handleMarcarComoConcluio(index)}
+                                            // onExcluir={handleExcluir(index)}
                                         />
                                     ))
                                     : <NenhumaTarefa texto={'Nenhuma tarefa adicionada!'} />}

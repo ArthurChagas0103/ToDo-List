@@ -11,14 +11,14 @@ const {
     Icons
 } = StyleTarefa
 
-function Tarefa({ textoTarefa }) {
+function Tarefa({ textoTarefa, onMarcarComoConcluido, onExcluir }) {
     return (
         <>
             <ConteudoPrincipal>
                 <TextoTarefa>{textoTarefa}</TextoTarefa>
                 <ContainerBtns>
-                    <BtnTarefaConcluida><Icons icon={faCheck}/></BtnTarefaConcluida>
-                    <BtnExcluirTarefa><Icons icon={faBan}/></BtnExcluirTarefa>
+                    <BtnTarefaConcluida onClick={onMarcarComoConcluido}><Icons icon={faCheck}/></BtnTarefaConcluida>
+                    <BtnExcluirTarefa onClick={onExcluir}><Icons icon={faBan}/></BtnExcluirTarefa>
                 </ContainerBtns>
             </ConteudoPrincipal>
         </>
@@ -27,6 +27,8 @@ function Tarefa({ textoTarefa }) {
 
 Tarefa.propTypes = {
     textoTarefa: PropTypes.string.isRequired,
+    onMarcarComoConcluido: PropTypes.func,
+    onExcluir: PropTypes.func
 }
 
 export default Tarefa
